@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>carousel</title>
+</head>
+
+<body>
+    <style>
+        body {
+            margin: 0px;
+            padding: 0px;
+            background-color: #000;
+        }
+
+        /* .carousel {
+            margin: 0% 15%;
+        } */
+
+        ul.slides {
+            /* display: block;
+            position: relative; */
+            padding: 0;
+            margin: 0px;
+            overflow: hidden;
+            list-style: none;
+            /* height: 100vh; */
+        }
+
+        .slides * {
+            user-select: none;
+            -ms-user-select: none;
+            -moz-user-select: none;
+            -khtml-user-select: none;
+            -webkit-user-select: none;
+            -webkit-touch-callout: none;
+        }
+
+        ul.slides input {
+            display: none;
+        }
+
+
+        .slide-container {
+            display: block;
+        }
+
+        .slide-image {
+            display: block;
+            position: absolute;
+            opacity: 0;
+        }
+
+        .slide-image img {
+            width: 60%;
+            /* top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%); */
+        }
+
+        .carousel-controls {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 999;
+            /* font-size: 100px;
+            line-height: 600px; */
+            color: #fff;
+        }
+
+        .carousel-controls label {
+            display: none;
+            position: absolute;
+            padding: 0 20px;
+            opacity: 0;
+            transition: opacity .2s;
+            cursor: pointer;
+        }
+
+        .slide-image:hover+.carousel-controls label {
+            opacity: 0.5;
+        }
+
+        .carousel-controls label:hover {
+            opacity: 1;
+        }
+
+        .carousel-dots {
+            width: auto;
+            height: 100%;
+            /* background-color: #000; */
+            position: absolute;
+            right: 0;
+            top: 0;
+            z-index: 999;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-end;
+        }
+
+        .carousel-dots .carousel-dot {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #fff;
+            background: #8111BB;
+            opacity: 0.3;
+            margin: 10px;
+        }
+
+        .carousel-dots .carousel-dot:visited {
+            background-color: #fff;
+        }
+
+        input:checked+.slide-container .slide-image {
+            opacity: 1;
+            transform: scale(1);
+            transition: opacity 1s ease-in-out;
+            top: 50%;
+            left: 30%;
+            transform: translate(-40%, -50%);
+        }
+
+        input:checked+.slide-container .carousel-controls label {
+            display: block;
+        }
+
+        input#img-1:checked~.carousel-dots label#img-dot-1,
+        input#img-2:checked~.carousel-dots label#img-dot-2,
+        input#img-3:checked~.carousel-dots label#img-dot-3,
+        input#img-4:checked~.carousel-dots label#img-dot-4 {
+            opacity: 1;
+        }
+
+
+        input:checked+.slide-container .nav label {
+            display: block;
+        }
+
+        .carousel__thumbnails {
+            list-style: none;
+            position: fixed;
+            display: flex;
+            width: 200px;
+            height: 100vh;
+            flex-direction: column;
+            justify-content: space-around;
+            right: 5%;
+        }
+
+        .carousel__slides+.carousel__thumbnails {
+            margin-top: 20px;
+        }
+
+        .carousel__thumbnails li {
+            transition: all 300ms ease-in-out;
+        }
+
+        .carousel__thumbnails label {
+            display: block;
+            position: relative;
+        }
+
+        .carousel__thumbnails label:before {
+            display: block;
+            /* content: 34; */
+            width: 100%;
+            padding-top: 100%;
+        }
+
+        .carousel__thumbnails label img {
+            /* position: absolute; */
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+        .carousel__thumbnails label:hover,
+        .carousel__thumbnails label:focus {
+            cursor: pointer;
+        }
+
+        .carousel__thumbnails label:hover img,
+        .carousel__thumbnails label:focus img {
+            box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.25);
+            transition: all 300ms ease-in-out;
+        }
+
+        .carousel__thumbnails img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            border-radius: 20px;
+            object-fit: cover;
+        }
+
+        .carousel__thumbnails h4 {
+            color: #fff;
+            margin: 0px;
+        }
+
+        video {
+            width: 80%;
+            height: 100%;
+            border-radius: 30px;
+        }
+    </style>
+
+    <div>
+        <div class="carousel">
+            <ul class="slides">
+                <input type="radio" name="radio-buttons" id="img-1" checked />
+                <li class="slide-container">
+                    <div class="slide-image">
+                        <video autoplay muted loop class="video" id="nb-video1"
+                            src="https://dl.dropboxusercontent.com/s/oc79xzg4c5m0sgf/210327_132509_025_FH.MP4?dl=0"></video>
+
+                    </div>
+                </li>
+                <input type="radio" name="radio-buttons" id="img-2" />
+                <li class="slide-container">
+                    <div class="slide-image">
+                        <video autoplay loop muted class="video" id="nb-video2"
+                            src="https://dl.dropboxusercontent.com/s/oc79xzg4c5m0sgf/210327_132509_025_FH.MP4?dl=0"></video>
+                    </div>
+                </li>
+                <input type="radio" name="radio-buttons" id="img-3" />
+                <li class="slide-container">
+                    <div class="slide-image">
+                        <video autoplay loop muted class="video" id="nb-video3"
+                            src="https://dl.dropboxusercontent.com/s/oc79xzg4c5m0sgf/210327_132509_025_FH.MP4?dl=0"></video>
+                    </div>
+                </li>
+                <input type="radio" name="radio-buttons" id="img-4" />
+                <li class="slide-container">
+                    <div class="slide-image">
+                        <video autoplay loop muted class="video" id="nb-video4"
+                            src="https://dl.dropboxusercontent.com/s/oc79xzg4c5m0sgf/210327_132509_025_FH.MP4?dl=0"></video>
+                    </div>
+                </li>
+                <div class="carousel-dots">
+                    <label for="img-1" class="carousel-dot" id="img-dot-1"></label>
+                    <label for="img-2" class="carousel-dot" id="img-dot-2"></label>
+                    <label for="img-3" class="carousel-dot" id="img-dot-3"></label>
+                    <label for="img-4" class="carousel-dot" id="img-dot-4"></label>
+                </div>
+
+                <ul class="carousel__thumbnails">
+                    <li>
+                        <label for="img-1"><img src="/images/colour_bright.png" alt="">
+                        </label>
+                        <h4>Clear license plates</h4>
+                    </li>
+                    <li>
+                        <label for="img-2"><img src="/images/NextBase_622-B12.png" alt=""></label>
+                        <h4>Clear license plates</h4>
+                    </li>
+                    <li>
+                        <label for="img-3"><img src="/images/number plate.png" alt=""></label>
+                        <h4>Clear license plates</h4>
+                    </li>
+                    <li>
+                        <label for="img-4"><img src="/images/street sign.png" alt=""></label>
+                        <h4>Clear road signs</h4>
+                    </li>
+                </ul>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('nb-video1').addEventListener('loadedmetadata', function () {
+            this.currentTime = 30;
+            console.log(this.currentTime)
+        }, false);
+        document.getElementById('nb-video2').addEventListener('loadedmetadata', function () {
+            this.currentTime = 10;
+            console.log(this.currentTime)
+        }, false);
+        document.getElementById('nb-video3').addEventListener('loadedmetadata', function () {
+            this.currentTime = 53;
+            console.log(this.currentTime)
+        }, false);
+        document.getElementById('nb-video4').addEventListener('loadedmetadata', function () {
+            this.currentTime = 20;
+            console.log(this.currentTime)
+        }, false);
+    </script>
+</body>
+
+</html>

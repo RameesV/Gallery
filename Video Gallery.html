@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.1.1/css/foundation.min.css" />
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        body {
+            background-color: #000;
+        }
+
+        .thumb-image {
+            width: 150px;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .main-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .thumbnails {
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+
+        .thumbnails p {
+            margin: 0px;
+            text-align: center;
+            color: #fff;
+        }
+
+        .video-player {
+            /* height: 100vh;
+            display: flex; */
+            align-items: center;
+            text-align: center
+        }
+
+        #nb-video {
+            max-width: 100%;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 20px;
+        }
+
+        .dots {
+            height: 80vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .carousel-dots {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .carousel-dots .carousel-dot {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #fff;
+            /* background: #8111BB; */
+            margin: 10px;
+        }
+
+        .active {
+            background-color: #8111BB !important;
+        }
+
+        @media only screen and (max-width: 540px) {
+            .main-container {
+                height: auto;
+                display: block;
+                margin-top: 5%;
+            }
+
+            .thumbnails {
+                flex-direction: row;
+                height: 100%;
+                margin-top: 5%;
+            }
+
+            .video-player {
+                width: 100%;
+                height: 100%;
+            }
+
+            .thumbnails p {
+                font-size: 10px;
+            }
+
+            .dots {
+                display: none;
+            }
+
+            .thumb-image {
+                width: 80px;
+                height: auto;
+                border-radius: 10px;
+            }
+        }
+    </style>
+    <div class="main-container">
+        <div class="video-player large-8 medium-7 small-12 columns">
+            <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/k8cJqk388xw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+            <video id="nb-video" autoplay muted src="https://dl.dropboxusercontent.com/s/8irb4vc06csf3ce/newpdp.mp4?dl=0">
+            </video>
+            <!-- <video id="nb-video" muted src="/1.mp4">
+            </video> -->
+        </div>
+        <div class="thumbnails gallery large-3 medium-4 small-12 columns" id="divId">
+            <div class="image1 ">
+                <img class="thumb-image gallery" id="thumb1" src="https://erryoder.sirv.com/622latest/colour_bright.png" />
+                <p>Lorem ipsum dolor</p>
+            </div>
+            <div class="image1">
+                <img class="thumb-image" id="thumb2" src="https://erryoder.sirv.com/622latest/NextBase_622-B12.png" />
+                <p>Lorem ipsum dolor</p>
+            </div>
+            <div class="image1">
+                <img class="thumb-image" id="thumb3" src="https://erryoder.sirv.com/622latest/number%20plate.png" />
+                <p>Lorem ipsum dolor</p>
+            </div>
+            <div class="image1">
+                <img class="thumb-image" id="thumb4" src="https://erryoder.sirv.com/622latest/street%20sign.png" />
+                <p>Lorem ipsum dolor</p>
+            </div>
+
+        </div>
+        <div class="dots large-1 medium-1 columns" id="divIds">
+            <div class="gallery carousel-dots" >
+                <label for="img-1" class="carousel-dot" id="thumbDot1"></label>
+                <label for="img-2" class="carousel-dot" id="thumbDot2"></label>
+                <label for="img-3" class="carousel-dot" id="thumbDot3"></label>
+                <label for="img-4" class="carousel-dot" id="thumbDot4"></label>
+            </div>
+        </div>
+    </div>
+    <script>
+        var images = document.getElementsByTagName("img");
+        var video = document.getElementById('nb-video');
+        var videoStartTime = 0;
+        var durationTime = 0;
+        var dot = document.getElementsByClassName("carousel-dot")
+        for (var i = 0; i < images.length; i++) {
+            images[i].onmouseover = function () {
+                this.style.cursor = "hand";
+            };
+            images[i].onmouseout = function () {
+                this.style.cursor = "pointer";
+            };
+        }
+
+        var myEl = document.getElementById('divId') ;
+       
+        myEl.addEventListener('click', function () {
+            console.log("sdfsdfsdfds", event.target.id);
+            console.log(event.target.id);
+            if (event.target.id == 'thumb1' || event.target.id == 'thumbDot1') {
+                video.currentTime = 10
+                video.play()
+                $("#thumbDot1").addClass('active')
+            }
+            else {
+                $("#thumbDot1").removeClass('active')
+            }
+            if (event.target.id == 'thumb2' || event.target.id == 'thumbDot2') {
+                video.currentTime = 20
+                video.play()
+                $("#thumbDot2").addClass('active')
+            }
+            else {
+                $("#thumbDot2").removeClass('active')
+            }
+            if (event.target.id == 'thumb3' || event.target.id == 'thumbDot3') {
+                video.currentTime = 30
+                video.play()
+                $("#thumbDot3").addClass('active')
+            }
+            else {
+                $("#thumbDot3").removeClass('active')
+            }
+            if (event.target.id == 'thumb4' || event.target.id == 'thumbDot4') {
+                video.currentTime = 40
+                video.play()
+                $("#thumbDot4").addClass('active')
+            }
+            else {
+                $("#thumbDot4").removeClass('active')
+            }
+        }, false);
+
+        var bulletDot = document.getElementById('divIds') ;
+       
+        bulletDot.addEventListener('click', function () {
+           console.log("sdfsdfsdfds", event.target.id);
+           console.log(event.target.id);
+           if (event.target.id == 'thumb1' || event.target.id == 'thumbDot1') {
+               video.currentTime = 10
+               video.play()
+               $("#thumbDot1").addClass('active')
+           }
+           else {
+               $("#thumbDot1").removeClass('active')
+           }
+           if (event.target.id == 'thumb2' || event.target.id == 'thumbDot2') {
+               video.currentTime = 20
+               video.play()
+               $("#thumbDot2").addClass('active')
+           }
+           else {
+               $("#thumbDot2").removeClass('active')
+           }
+           if (event.target.id == 'thumb3' || event.target.id == 'thumbDot3') {
+               video.currentTime = 30
+               video.play()
+               $("#thumbDot3").addClass('active')
+           }
+           else {
+               $("#thumbDot3").removeClass('active')
+           }
+           if (event.target.id == 'thumb4' || event.target.id == 'thumbDot4') {
+               video.currentTime = 40
+               video.play()
+               $("#thumbDot4").addClass('active')
+           }
+           else {
+               $("#thumbDot4").removeClass('active')
+           }
+       }, false);
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.1.1/js/foundation.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+</body>
+
+</html>

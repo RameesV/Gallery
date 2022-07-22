@@ -21,6 +21,10 @@
             border-radius: 10px;
         }
 
+        .image1 :hover {
+            cursor: pointer;
+        }
+
         .main-container {
             display: flex;
             align-items: center;
@@ -56,7 +60,7 @@
         }
 
         .dots {
-            height: 80vh;
+            height: 100vh;
             display: flex;
             align-items: center;
         }
@@ -72,12 +76,14 @@
             height: 10px;
             border-radius: 50%;
             background-color: #fff;
-            /* background: #8111BB; */
             margin: 10px;
         }
 
         .active {
             background-color: #8111BB !important;
+        }
+        input:checked+label {
+            background-color: red;
         }
 
         @media only screen and (max-width: 540px) {
@@ -115,15 +121,14 @@
     </style>
     <div class="main-container">
         <div class="video-player large-8 medium-7 small-12 columns">
-            <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/k8cJqk388xw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
-            <video id="nb-video" autoplay muted src="https://dl.dropboxusercontent.com/s/8irb4vc06csf3ce/newpdp.mp4?dl=0">
+            <video id="nb-video" autoplay muted
+                src="https://dl.dropboxusercontent.com/s/8irb4vc06csf3ce/newpdp.mp4?dl=0">
             </video>
-            <!-- <video id="nb-video" muted src="/1.mp4">
-            </video> -->
         </div>
         <div class="thumbnails gallery large-3 medium-4 small-12 columns" id="divId">
-            <div class="image1 ">
-                <img class="thumb-image gallery" id="thumb1" src="https://erryoder.sirv.com/622latest/colour_bright.png" />
+            <div class="image1">
+                <img class="thumb-image gallery" id="thumb1"
+                    src="https://erryoder.sirv.com/622latest/colour_bright.png" />
                 <p>Lorem ipsum dolor</p>
             </div>
             <div class="image1">
@@ -141,109 +146,69 @@
 
         </div>
         <div class="dots large-1 medium-1 columns" id="divIds">
-            <div class="gallery carousel-dots" >
-                <label for="img-1" class="carousel-dot" id="thumbDot1"></label>
-                <label for="img-2" class="carousel-dot" id="thumbDot2"></label>
-                <label for="img-3" class="carousel-dot" id="thumbDot3"></label>
-                <label for="img-4" class="carousel-dot" id="thumbDot4"></label>
+            <div class="gallery carousel-dots">
+                <label for="slide-1-content" class="carousel-dot" id="thumbDot1"></label>
+                <label for="slide-2-content" class="carousel-dot" id="thumbDot2"></label>
+                <label for="slide-3-content" class="carousel-dot" id="thumbDot3"></label>
+                <label for="slide-4-content" class="carousel-dot" id="thumbDot4"></label>
             </div>
         </div>
     </div>
-    <script>
-        var images = document.getElementsByTagName("img");
-        var video = document.getElementById('nb-video');
-        var videoStartTime = 0;
-        var durationTime = 0;
-        var dot = document.getElementsByClassName("carousel-dot")
-        for (var i = 0; i < images.length; i++) {
-            images[i].onmouseover = function () {
-                this.style.cursor = "hand";
-            };
-            images[i].onmouseout = function () {
-                this.style.cursor = "pointer";
-            };
-        }
-
-        var myEl = document.getElementById('divId') ;
-       
-        myEl.addEventListener('click', function () {
-            console.log("sdfsdfsdfds", event.target.id);
-            console.log(event.target.id);
-            if (event.target.id == 'thumb1' || event.target.id == 'thumbDot1') {
-                video.currentTime = 10
-                video.play()
-                $("#thumbDot1").addClass('active')
-            }
-            else {
-                $("#thumbDot1").removeClass('active')
-            }
-            if (event.target.id == 'thumb2' || event.target.id == 'thumbDot2') {
-                video.currentTime = 20
-                video.play()
-                $("#thumbDot2").addClass('active')
-            }
-            else {
-                $("#thumbDot2").removeClass('active')
-            }
-            if (event.target.id == 'thumb3' || event.target.id == 'thumbDot3') {
-                video.currentTime = 30
-                video.play()
-                $("#thumbDot3").addClass('active')
-            }
-            else {
-                $("#thumbDot3").removeClass('active')
-            }
-            if (event.target.id == 'thumb4' || event.target.id == 'thumbDot4') {
-                video.currentTime = 40
-                video.play()
-                $("#thumbDot4").addClass('active')
-            }
-            else {
-                $("#thumbDot4").removeClass('active')
-            }
-        }, false);
-
-        var bulletDot = document.getElementById('divIds') ;
-       
-        bulletDot.addEventListener('click', function () {
-           console.log("sdfsdfsdfds", event.target.id);
-           console.log(event.target.id);
-           if (event.target.id == 'thumb1' || event.target.id == 'thumbDot1') {
-               video.currentTime = 10
-               video.play()
-               $("#thumbDot1").addClass('active')
-           }
-           else {
-               $("#thumbDot1").removeClass('active')
-           }
-           if (event.target.id == 'thumb2' || event.target.id == 'thumbDot2') {
-               video.currentTime = 20
-               video.play()
-               $("#thumbDot2").addClass('active')
-           }
-           else {
-               $("#thumbDot2").removeClass('active')
-           }
-           if (event.target.id == 'thumb3' || event.target.id == 'thumbDot3') {
-               video.currentTime = 30
-               video.play()
-               $("#thumbDot3").addClass('active')
-           }
-           else {
-               $("#thumbDot3").removeClass('active')
-           }
-           if (event.target.id == 'thumb4' || event.target.id == 'thumbDot4') {
-               video.currentTime = 40
-               video.play()
-               $("#thumbDot4").addClass('active')
-           }
-           else {
-               $("#thumbDot4").removeClass('active')
-           }
-       }, false);
-    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.1.1/js/foundation.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <script>
+        var video = document.getElementById('nb-video');
+        var myEl = document.getElementById('divId');
+
+        $("#divId, #divIds").click(function () {
+            console.log("ID is : ", this.id)
+            var myEl = document.getElementById(this.id)
+            gallery(myEl)
+            firstChild = myEl.children[0]
+            elID = event.target.id
+            console.log("target is", elID);
+        });
+
+
+        $("#thumbDot1").addClass('active')
+        function gallery(myEl) {
+            myEl.addEventListener('click', function () {
+                console.log("my el is ;",)
+
+                if (event.target.id == 'thumb1' || event.target.id == 'thumbDot1') {
+                    video.currentTime = 10
+                    video.play()
+                    highliteActive($("#thumbDot1"))
+
+                }
+                if (event.target.id == 'thumb2' || event.target.id == 'thumbDot2') {
+                    video.currentTime = 20
+                    video.play()
+                    highliteActive($("#thumbDot2"))
+                }
+
+                if (event.target.id == 'thumb3' || event.target.id == 'thumbDot3') {
+                    video.currentTime = 30
+                    video.play()
+                    highliteActive($("#thumbDot3"))
+                }
+                if (event.target.id == 'thumb4' || event.target.id == 'thumbDot4') {
+                    video.currentTime = 40
+                    video.play()
+
+                    highliteActive($("#thumbDot4"))
+                }
+                function highliteActive(activeElement) {
+                    $("#thumbDot1").removeClass('active')
+                    $("#thumbDot2").removeClass('active')
+                    $("#thumbDot3").removeClass('active')
+                    $("#thumbDot4").removeClass('active')
+
+                    activeElement.addClass('active')
+                }
+            }, false);
+        }
+    </script>
 </body>
 
 </html>

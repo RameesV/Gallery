@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.1.1/css/foundation.min.css" />
-    <title>Document</title>
+    <title>Video Gallery</title>
 </head>
 
 <body>
@@ -21,7 +21,7 @@
             border-radius: 10px;
         }
 
-        .image1 :hover {
+        .thumbDiv :hover {
             cursor: pointer;
         }
 
@@ -45,8 +45,6 @@
         }
 
         .video-player {
-            /* height: 100vh;
-            display: flex; */
             align-items: center;
             text-align: center
         }
@@ -82,9 +80,6 @@
         .active {
             background-color: #8111BB !important;
         }
-        input:checked+label {
-            background-color: red;
-        }
 
         @media only screen and (max-width: 540px) {
             .main-container {
@@ -109,7 +104,13 @@
             }
 
             .dots {
-                display: none;
+                height: auto;
+                display: block;
+            }
+
+            .carousel-dots {
+                display: block;
+                text-align: center;
             }
 
             .thumb-image {
@@ -126,20 +127,20 @@
             </video>
         </div>
         <div class="thumbnails gallery large-3 medium-4 small-12 columns" id="divId">
-            <div class="image1">
+            <div class="thumbDiv">
                 <img class="thumb-image gallery" id="thumb1"
                     src="https://erryoder.sirv.com/622latest/colour_bright.png" />
                 <p>Lorem ipsum dolor</p>
             </div>
-            <div class="image1">
+            <div class="thumbDiv">
                 <img class="thumb-image" id="thumb2" src="https://erryoder.sirv.com/622latest/NextBase_622-B12.png" />
                 <p>Lorem ipsum dolor</p>
             </div>
-            <div class="image1">
+            <div class="thumbDiv">
                 <img class="thumb-image" id="thumb3" src="https://erryoder.sirv.com/622latest/number%20plate.png" />
                 <p>Lorem ipsum dolor</p>
             </div>
-            <div class="image1">
+            <div class="thumbDiv">
                 <img class="thumb-image" id="thumb4" src="https://erryoder.sirv.com/622latest/street%20sign.png" />
                 <p>Lorem ipsum dolor</p>
             </div>
@@ -161,12 +162,8 @@
         var myEl = document.getElementById('divId');
 
         $("#divId, #divIds").click(function () {
-            console.log("ID is : ", this.id)
             var myEl = document.getElementById(this.id)
             gallery(myEl)
-            firstChild = myEl.children[0]
-            elID = event.target.id
-            console.log("target is", elID);
         });
 
 

@@ -6,6 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.1.1/css/foundation.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+        integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Cards for Homepage</title>
 </head>
 
@@ -17,13 +20,34 @@
             color: #fff !important;
         }
 
+        .cameraFrame {
+            position: absolute;
+            width: 375px;
+            left: 50%;
+            top: 51%;
+            transform: translate(-50%, -50%);
+            z-index: 3;
+        }
+
         .centerVideo {
             position: absolute;
-            width: 400px;
+            width: 275px;
             left: 50%;
             top: 50%;
             transform: translate(-50%, -50%);
             z-index: 2;
+        }
+
+        .fa-play-circle {
+            position: absolute;
+            z-index: 3;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #fff;
+            font-size: 50px;
+            background-color: #8111BB;
+            border-radius: 50%;
         }
 
         .row1,
@@ -57,6 +81,7 @@
         .card3 {
             background-image: url("/images/bg2.jpeg");
             background-size: 100% 100%;
+            object-fit: fill;
             padding: 0px 0px 0px 50px;
             bottom: 0;
         }
@@ -79,18 +104,31 @@
             font-size: 25px;
         }
 
-        .card-2-Mob, .card-3-Mob, .card-4-Mob {
+        .card-2-Mob,
+        .card-3-Mob,
+        .card-4-Mob {
             display: none;
         }
 
         @media only screen and (max-width: 540px) {
             .centerVideo {
-                position: initial;
-                width: 400px;
-                left: 0%;
-                top: 00%;
-                transform: translate(0%, 0%);
+                position: absolute;
+                width: 260px;
+                margin: 0 auto;
+                left: 50%;
+                top: 0%;
+                transform: translate(-50%, 20%);
                 z-index: 2;
+            }
+
+            .cameraFrame {
+                position: initial;
+                width: 370px;
+                margin: 0 auto;
+                left: 0%;
+                top: 0%;
+                transform: translate(0%, 0%);
+                z-index: 3;
             }
 
             .row1,
@@ -103,19 +141,34 @@
                 height: 30vh;
             }
 
-            .card-2-Mob, .card-3-Mob, .card-4-Mob {
+            .card-2-Mob,
+            .card-3-Mob,
+            .card-4-Mob {
                 display: block;
                 background-color: #808080;
+                padding: 40px 10px 0px 30px;
             }
 
-            .cardContent-2, .cardContent-3, .cardContent-4 {
+            .cardContent-2,
+            .cardContent-3,
+            .cardContent-4 {
                 display: none;
+            }
+
+            .fa-play-circle {
+                top: 12%;
+                left: 50%;
+                transform: translate(-50%, -50%);
             }
         }
     </style>
-    <div class="parentCard">
-        <div class="centerVideo">
-            <img src="/images/NextBase_622-B12.png"></img>
+    <div class="row parentCard">
+        <div class="centerDiv">
+            <i class="fa fa-play-circle"></i>
+            <div class="cameraFrame">
+                <img src="/images/Camframe.png"></img>
+            </div>
+            <video class="centerVideo" autoplay loop muted src="/Video/nextbase622.mp4"></video>
         </div>
         <div class="row1">
             <div class="card card1 large-6 medium-5 columns">

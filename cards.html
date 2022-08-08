@@ -6,9 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.1.1/css/foundation.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
-        integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"/>
     <title>Cards for Homepage</title>
 </head>
 
@@ -38,16 +36,21 @@
             z-index: 2;
         }
 
-        .fa-play-circle {
+        .fa-play-circle,
+        .fa-circle-pause {
             position: absolute;
-            z-index: 3;
+            z-index: 10;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             color: #fff;
             font-size: 50px;
-            background-color: #8111BB;
+            background: linear-gradient(90deg, #0A78CA, #8111BB);
             border-radius: 50%;
+        }
+        .fa-play-circle:hover,
+        .fa-circle-pause:hover {
+            cursor: pointer;
         }
 
         .row1,
@@ -56,7 +59,8 @@
         }
 
         .card {
-            height: 45vh;
+            min-height: 45vh;
+            height: auto;
             width: 48%;
             border: 1px solid;
             border-radius: 20px;
@@ -65,7 +69,7 @@
 
         .card1 {
             background: linear-gradient(90deg, #0A78CA, #8111BB);
-            padding: 50px 0px 0px 50px;
+            padding: 25px 10px 0px 30px;
         }
 
         .card1 h2 {
@@ -75,21 +79,21 @@
         .card2 {
             background-image: url("/images/bg1.jpeg");
             background-size: 100% 100%;
-            padding: 50px 0px 0px 50px;
+            padding: 25px 10px 0px 30px;
         }
 
         .card3 {
             background-image: url("/images/bg2.jpeg");
             background-size: 100% 100%;
             object-fit: fill;
-            padding: 0px 0px 0px 50px;
+            padding: 0px 10px 0px 50px;
             bottom: 0;
         }
 
         .card4 {
             background-image: url("/images/bg3.jpeg");
             background-size: 100% 100%;
-            padding: 0px 0px 0px 50px;
+            padding: 0px 10px 0px 50px;
         }
 
         .cardContent-3,
@@ -101,13 +105,23 @@
 
         .contentHead {
             color: #fff;
-            font-size: 25px;
+            font-size: 20px;
+            font-weight: bold;
         }
 
         .card-2-Mob,
         .card-3-Mob,
         .card-4-Mob {
             display: none;
+        }
+
+        .cardContent-1 h2 {
+            font-size: 35px;
+        }
+
+        .contentText {
+            font-size: 14px;
+            word-break: break-word;
         }
 
         @media only screen and (max-width: 540px) {
@@ -138,15 +152,24 @@
 
             .card {
                 width: 95%;
-                height: 30vh;
+                min-height: 30vh;
+                height: auto;
             }
 
             .card-2-Mob,
             .card-3-Mob,
             .card-4-Mob {
                 display: block;
-                background-color: #808080;
+                background-color: #cfcfcf;
+                color: #000;
                 padding: 40px 10px 0px 30px;
+                border: 0px;
+            }
+
+            .cardContent-2-Mob h2,
+            .cardContent-3-Mob h2,
+            .cardContent-4-Mob h2 {
+                color: #000;
             }
 
             .cardContent-2,
@@ -155,7 +178,8 @@
                 display: none;
             }
 
-            .fa-play-circle {
+            .fa-play-circle,
+            .fa-circle-pause {
                 top: 12%;
                 left: 50%;
                 transform: translate(-50%, -50%);
@@ -164,17 +188,18 @@
     </style>
     <div class="row parentCard">
         <div class="centerDiv">
-            <i class="fa fa-play-circle"></i>
+            <i class="fa fa-circle-pause" id="pause"></i>
+            <i class="fa fa-play-circle" id="play"></i>
             <div class="cameraFrame">
                 <img src="/images/Camframe.png"></img>
             </div>
-            <video class="centerVideo" autoplay loop muted src="/Video/nextbase622.mp4"></video>
+            <video class="centerVideo" id="video" muted loop src="/Video/nextbase622.mp4"></video>
         </div>
         <div class="row1">
             <div class="card card1 large-6 medium-5 columns">
                 <div class="cardContent-1">
                     <h2 class="contentHead">Proof Positive</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur
+                    <p class="contentText">Lorem ipsum dolor sit amet consectetur
                         adipisicing elit. Voluptate, perspiciatis?
                         adipisicing elit. Voluptate, perspiciatis?
                         adipisicing elit. Voluptate, perspiciatis?
@@ -184,7 +209,7 @@
             <div class="card card-2-Mob large-6 medium-5 columns">
                 <div class="cardContent-2-Mob">
                     <h2 class="contentHead">There for you in an emergency</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur
+                    <p class="contentText">Lorem ipsum dolor sit amet consectetur
                         adipisicing elit. Voluptate, perspiciatis?
                         adipisicing elit. Voluptate, perspiciatis?
                     </p>
@@ -193,7 +218,7 @@
             <div class="card card2 large-6 medium-5 columns">
                 <div class="cardContent-2">
                     <h2 class="contentHead">There for you in an emergency</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur
+                    <p class="contentText">Lorem ipsum dolor sit amet consectetur
                         adipisicing elit. Voluptate, perspiciatis?
                         adipisicing elit. Voluptate, perspiciatis?
                     </p>
@@ -204,7 +229,7 @@
             <div class="card card-3-Mob large-6 medium-5 columns">
                 <div class="cardContent-3-Mob">
                     <h2 class="contentHead">Easy to share</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur
+                    <p class="contentText">Lorem ipsum dolor sit amet consectetur
                         adipisicing elit. Voluptate, perspiciatis?
                         adipisicing elit. Voluptate, perspiciatis?
                     </p>
@@ -213,7 +238,7 @@
             <div class="card card3 large-6 medium-5 columns">
                 <div class="cardContent-3">
                     <h2 class="contentHead">Easy to share</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur
+                    <p class="contentText">Lorem ipsum dolor sit amet consectetur
                         adipisicing elit. Voluptate, perspiciatis?
                         adipisicing elit. Voluptate, perspiciatis?
                     </p>
@@ -222,7 +247,7 @@
             <div class="card card-4-Mob large-6 medium-5 columns">
                 <div class="cardContent-4-Mob">
                     <h2 class="contentHead">Hands-free control</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur
+                    <p class="contentText">Lorem ipsum dolor sit amet consectetur
                         adipisicing elit. Voluptate, perspiciatis?
                         adipisicing elit. Voluptate, perspiciatis?
                     </p>
@@ -231,7 +256,7 @@
             <div class="card card4 large-6 medium-5 columns">
                 <div class="cardContent-4">
                     <h2 class="contentHead">Hands-free control</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur
+                    <p class="contentText">Lorem ipsum dolor sit amet consectetur
                         adipisicing elit. Voluptate, perspiciatis?
                         adipisicing elit. Voluptate, perspiciatis?
                     </p>
@@ -239,6 +264,24 @@
             </div>
         </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <script>
+        $('#play').on('click', function (event) {
+            //click the play button to play video 
+            $('#video').trigger('play');
+            //show the pause button and hide play button  
+            $('#pause').show();
+            $('#play').hide();
+        });
+
+        $('#pause').on('click', function (event) {
+            //click the play button to pause video 
+            $('#video').trigger('pause');
+            //show the play button and hide pause button
+            $('#pause').hide();
+            $('#play').show();
+        });
+    </script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.1.1/js/foundation.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>

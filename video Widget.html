@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.1.1/css/foundation.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" />
+    <title>Video Widget Nextbase</title>
+</head>
+
+<body>
+    <div class="nb-shogun-video-container">
+        <i class="fa fa-play-circle nb-shogun-play" onclick="nb_playvideo(this)"></i>
+        <i class="fa fa-circle-pause nb-shogun-pause" onclick="nb_pausevideo(this)" style="display: none;"></i>
+        <video class="nb-shogun-Video-section lazy" style="border-radius:25px;" id="cam-video" muted loop
+            src="https://dl.dropboxusercontent.com/s/d04uh1bchacvm43/pdpvideoslider.mp4?dl=0"></video>
+    </div>
+
+    <style>
+        .fa-play-circle,
+        .fa-circle-pause {
+            position: absolute;
+            z-index: 10;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #fff;
+            font-size: 50px;
+            background: linear-gradient(90deg, #0A78CA, #8111BB);
+            border-radius: 50%;
+        }
+
+        .nb-shogun-Video-section {
+            display: flex;
+            align-content: center;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: auto;
+        }
+
+        .fa-play-circle:hover,
+        .fa-circle-pause:hover {
+            cursor: pointer;
+        }
+
+        .nb-shogun-video-container {
+            display: flex;
+            align-content: center;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            flex-direction: row;
+        }
+
+        @media only screen and (max-width: 540px) {
+
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <script>
+        var nb_playvideo = (event) => {
+            console.log("worked", $(event).closest('.nb-shogun-video-container').find('.nb-shogun-Video-section'))
+            $(event).closest('.nb-shogun-video-container').find('.nb-shogun-Video-section').trigger('play');
+            //show the pause button and hide play button  
+            $(event).closest('.nb-shogun-video-container').find('.nb-shogun-pause').show();
+            $(event).closest('.nb-shogun-video-container').find('.nb-shogun-play').hide();
+        }
+        var nb_pausevideo = (event) => {
+            console.log("worked", $(event).closest('.nb-shogun-video-container').find('.nb-shogun-Video-section'))
+            $(event).closest('.nb-shogun-video-container').find('.nb-shogun-Video-section').trigger('pause');
+            //show the pause button and hide play button  
+            $(event).closest('.nb-shogun-video-container').find('.nb-shogun-pause').hide();
+            $(event).closest('.nb-shogun-video-container').find('.nb-shogun-play').show();
+        }
+    </script>
+</body>
+
+</html>

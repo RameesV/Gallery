@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review Widget</title>
+</head>
+
+<body>
+    <style>
+        body {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .widget-card {
+            position: absolute;
+            width: auto;
+            min-height: 300px;
+            background-image: url(/images/card-bg.png);
+            background-size: 100% 100%;
+            object-fit: fill;
+            border-radius: 20px;
+            padding: 20px 20px;
+            color: #fff;
+            font-family: 'Roobert TRIAL';
+            font-style: normal;
+            font-size: 20px;
+        }
+
+        #overlay {
+            position: fixed;
+            width: auto;
+            min-height: 300px;
+            height: auto;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 20px 20px;
+            border-radius: 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+            opacity: 0.9;
+            z-index: 2;
+
+        }
+
+        .head-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .u_image {
+            width: 45px;
+            height: 45px;
+            margin: 0px 20px 0px 0px;
+            z-index: 3;
+        }
+
+        .u_name {
+            z-index: 3;
+            font-size: 14px;
+            margin: 0px;
+        }
+
+        .review-container {
+            position: absolute;
+            bottom: 0;
+            margin: 0px 0px 20px 0px;
+            z-index: 3;
+        }
+
+        .stars {
+            display: flex;
+            margin: 0px 0px 20px 0px;
+        }
+
+        .single-star {
+            margin: 0px 0px 0px 6px;
+        }
+
+        .rev-head {
+            font-weight: bold;
+        }
+
+        .revie_text p {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        @media only screen and (max-width: 540px) {
+            .widget-card, #overlay{
+                padding: 5px 5px;
+                border-radius: 15px;
+            }
+            .u_image {
+                width: 35px;
+                height: 35px;
+                margin: 0px 10px 0px 0px;
+                z-index: 3;
+            }
+        }
+    </style>
+    <div>
+        <div class="widget-card">
+            <div class="head-container">
+                <img class="u_image" src="/images/User2.png" alt="">
+                <p class="u_name">Talli Pinhasi</p>
+            </div>
+            <div class="review-container">
+                <div class="stars">
+                    <img src="/images/4star.png" alt="">
+                    <img class="single-star" src="/images/1star.png" alt="">
+                </div>
+                <div class="revie_text">
+                    <p class="rev-head">
+                        Great service, fast shipping
+                    </p>
+                    <p class="rev-content">
+                        “The communication with Nextbase was above excellent…”
+                    </p>
+                </div>
+            </div>
+            <div id="overlay">
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

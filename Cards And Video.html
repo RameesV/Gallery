@@ -20,7 +20,8 @@
 
         .cameraFrame {
             position: absolute;
-            width: 375px;
+            /* width: 375px; */
+            width: 35vw;
             left: 50%;
             top: 51%;
             transform: translate(-50%, -50%);
@@ -29,7 +30,7 @@
 
         .centerVideo {
             position: absolute;
-            width: 275px;
+            width: 28vw;
             left: 50%;
             top: 50%;
             transform: translate(-50%, -50%);
@@ -106,7 +107,7 @@
 
         .contentHead {
             color: #fff;
-            font-size: 20px;
+            font-size: 2.5vw;
             font-weight: bold;
         }
 
@@ -117,15 +118,38 @@
         }
 
         .cardContent-1 h2 {
-            font-size: 35px;
+            font-size: 3.5vw;
         }
 
         .contentText {
-            font-size: 14px;
+            font-size: 1.5vw;
             word-break: break-word;
         }
 
-        @media only screen and (max-width: 540px) {
+        @media screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+            .parentCard {
+                top: 50%;
+                left: 50%;
+                transform: translate(0px, 0px);
+            }
+            .card{
+                min-height: 22vh;
+            }
+        }
+
+        @media only screen and (max-width: 767px) {
+            .cardContent-1 h2 {
+                font-size: 35px;
+            }
+
+            .contentText {
+                font-size: 14px;
+            }
+
+            .contentHead {
+                font-size: 22px;
+            }
+
             .centerVideo {
                 position: absolute;
                 width: 260px;
@@ -188,7 +212,7 @@
             }
         }
     </style>
-    <div class="row parentCard">
+    <div class="parentCard">
         <div class="centerDiv">
             <i class="fa fa-circle-pause" id="pause"></i>
             <i class="fa fa-play-circle" id="play"></i>

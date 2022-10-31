@@ -11,14 +11,20 @@
 </head>
 
 <body>
-    <div class="nb-shogun-video-container">
-        <i class="fa fa-play-circle nb-shogun-play" onclick="nb_playvideo(this)"></i>
-        <i class="fa fa-circle-pause nb-shogun-pause" onclick="nb_pausevideo(this)" style="display: none;"></i>
-        <video class="nb-shogun-Video-section lazy" style="border-radius:25px;" id="cam-video" muted loop
-            src="https://dl.dropboxusercontent.com/s/d04uh1bchacvm43/pdpvideoslider.mp4?dl=0"></video>
+    <div class="videoContainer">
+        <div class="nb-shogun-video-container">
+            <i class="fa fa-play-circle nb-shogun-play" onclick="nb_playvideo(this)"></i>
+            <i class="fa fa-circle-pause nb-shogun-pause" onclick="nb_pausevideo(this)" style="display: none;"></i>
+            <video class="nb-shogun-Video-section lazy" style="border-radius:25px;" id="cam-video" muted autoplay
+                src="//dl.dropboxusercontent.com/s/ydqfqgh48he5q57/GW522_Lens.mp4?dl=0"></video>
+        </div>
     </div>
-
     <style>
+        video {
+            width: 350px;
+            height: 350px;
+        }
+
         .fa-play-circle,
         .fa-circle-pause {
             position: absolute;
@@ -30,6 +36,14 @@
             font-size: 50px;
             background: linear-gradient(90deg, #0A78CA, #8111BB);
             border-radius: 50%;
+        }
+
+        .fa-widget {
+            visibility: hidden !important;
+        }
+
+        .nb-shogun-video-container:hover .fa-widget {
+            visibility: visible !important;
         }
 
         .nb-shogun-Video-section {
@@ -55,26 +69,38 @@
             flex-direction: row;
         }
 
-        @media only screen and (max-width: 540px) {
-
-        }
+        @media only screen and (max-width: 540px) {}
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
     <script>
         var nb_playvideo = (event) => {
-            console.log("worked", $(event).closest('.nb-shogun-video-container').find('.nb-shogun-Video-section'))
+            // console.log("worked", $(event).closest('.nb-shogun-video-container').find('.nb-shogun-Video-section'))
             $(event).closest('.nb-shogun-video-container').find('.nb-shogun-Video-section').trigger('play');
             //show the pause button and hide play button  
             $(event).closest('.nb-shogun-video-container').find('.nb-shogun-pause').show();
             $(event).closest('.nb-shogun-video-container').find('.nb-shogun-play').hide();
         }
         var nb_pausevideo = (event) => {
-            console.log("worked", $(event).closest('.nb-shogun-video-container').find('.nb-shogun-Video-section'))
+            // console.log("worked", $(event).closest('.nb-shogun-video-container').find('.nb-shogun-Video-section'))
             $(event).closest('.nb-shogun-video-container').find('.nb-shogun-Video-section').trigger('pause');
             //show the pause button and hide play button  
             $(event).closest('.nb-shogun-video-container').find('.nb-shogun-pause').hide();
             $(event).closest('.nb-shogun-video-container').find('.nb-shogun-play').show();
         }
+        var attribute_value = $(".nb-shogun-Video-section").attr("autoplay")
+        console.log("attributes ", attribute_value)
+        if (attribute_value == "autoplay") {
+            // alert("heyyyyy autoplay")
+            $('.nb-shogun-video-container').find('.nb-shogun-play').hide();
+            $('.nb-shogun-video-container').find('.nb-shogun-pause').show();
+        }
+
+        // Show the play button once the video is played completely
+        var cam_vid = document.getElementById("cam-video");
+        cam_vid.onended = function () {
+            $('.nb-shogun-video-container').find('.nb-shogun-pause').hide();
+            $('.nb-shogun-video-container').find('.nb-shogun-play').show();
+        };
     </script>
 </body>
 
